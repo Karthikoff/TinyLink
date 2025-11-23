@@ -4,10 +4,10 @@ import { sql } from '@/lib/db';
 // GET /api/links/:code - Get stats for a single link
 export async function GET(
   request: NextRequest,
-  { params }: { params: { code: string } }
+  context: any
 ) {
   try {
-    const { code } = params;
+    const { code } =await context.params;
     
     const result = await sql`
       SELECT * FROM links WHERE code = ${code}
